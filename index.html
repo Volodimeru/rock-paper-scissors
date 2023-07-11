@@ -16,48 +16,55 @@ create variable assign it to random choice
 ask user for choice:
 create variable assign it to users choice
 have count for user and count for computer
-if computer choice = rock and userchoice = scissors give computer +1
-
+if computer choice = rock and user choice = scissors give computer +1
+While player score or pc score < 5, Play game(game function)
+When score is 5 display score and log you Won! or you Lost!
 */
+const array  = ["rock", "paper", "scissors"]
 function getComputerChoice(arr) {
 const randomIndex = Math.floor(Math.random() * arr.length);
 const item = arr[randomIndex];
 return item;
 }
-const array  = ["rock", "paper", "scissors"]
-let computerSelection = getComputerChoice(array);
-
-let playerSelection = prompt("Make a choice, enter: Rock, Paper or Scissors").toLowerCase();
-console.log(playerSelection)
-console.log(computerSelection)
 let playerscore = 0;
 let pcscore = 0;
 
 function playRound(playerSelection, computerSelection) {
 if (playerSelection == computerSelection) {
-console.log("it is a tie");
+console.log("Tie!");
 } else if (playerSelection == "rock" &&  computerSelection == "scissors"){ 
     playerscore+=1;
-    console.log("You Win! Rock beats Scissors");
+    console.log("You Win! Rock beats Scissors.");
 } else if (playerSelection == "rock" && computerSelection == "paper"){
     pcscore +=1;
-    console.log("You Lose! Paper beats Rock"); 
+    console.log("You Lose! Paper beats Rock."); 
 } else if (playerSelection == "scissors" && computerSelection == "paper"){
     playerscore +=1;
-    console.log("You Win! Scissors beats Paper");
+    console.log("You Win! Scissors beats Paper.");
 } else if (playerSelection == "scissors" && computerSelection == "rock"){
     pcscore +=1;
-    console.log("You Lose! Rock beats Scissors"); 
+    console.log("You Lose! Rock beats Scissors."); 
 } else if (playerSelection == "paper" && computerSelection == "rock") {
     playerscore+=1;
-    console.log("You Win! Paper beats Rock");
+    console.log("You Win! Paper beats Rock.");
 } else if (playerSelection == "paper" && computerSelection == "scissors") {
-    pcscore+=1;
-    console.log("You Lose! Scissors beats Paper")
+    pcscore +=1;
+    console.log("You Lose! Scissors beats Paper.")
 }
 }
-playRound(playerSelection, computerSelection);
 
+while (pcscore < 5 && playerscore < 5) {
+    let playerSelection = prompt("Make a choice, enter: Rock, Paper or Scissors").toLowerCase();
+    console.log(playerSelection)
+    let computerSelection = getComputerChoice(array);
+    console.log(computerSelection)
+    playRound(playerSelection, computerSelection);
+    if (pcscore == 5) {
+        console.log("********   Game over! You lose! :\(   ********");
+    } else if (playerscore == 5) {
+        console.log("********   Game over! You Win! :\)   ********");
+    }
+}
     </script>
 </body>
 </html>
