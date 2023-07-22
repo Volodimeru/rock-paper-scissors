@@ -4,67 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-/*
-interface - NO
-input - user enters number
-output - result of wining or loosing
-make computer choice:
-create variable assign it to random choice
-ask user for choice:
-create variable assign it to users choice
-have count for user and count for computer
-if computer choice = rock and user choice = scissors give computer +1
-While player score or pc score < 5, Play game(game function)
-When score is 5 display score and log you Won! or you Lost!
-*/
-const array  = ["rock", "paper", "scissors"]
-function getComputerChoice(arr) {
-const randomIndex = Math.floor(Math.random() * arr.length);
-const item = arr[randomIndex];
-return item;
-}
-let playerscore = 0;
-let pcscore = 0;
+    <div class="main-container">
+        <div class="start-play-container">
 
-function playRound(playerSelection, computerSelection) {
-if (playerSelection == computerSelection) {
-console.log("Tie!");
-} else if (playerSelection == "rock" &&  computerSelection == "scissors"){ 
-    playerscore+=1;
-    console.log("You Win! Rock beats Scissors.");
-} else if (playerSelection == "rock" && computerSelection == "paper"){
-    pcscore +=1;
-    console.log("You Lose! Paper beats Rock."); 
-} else if (playerSelection == "scissors" && computerSelection == "paper"){
-    playerscore +=1;
-    console.log("You Win! Scissors beats Paper.");
-} else if (playerSelection == "scissors" && computerSelection == "rock"){
-    pcscore +=1;
-    console.log("You Lose! Rock beats Scissors."); 
-} else if (playerSelection == "paper" && computerSelection == "rock") {
-    playerscore+=1;
-    console.log("You Win! Paper beats Rock.");
-} else if (playerSelection == "paper" && computerSelection == "scissors") {
-    pcscore +=1;
-    console.log("You Lose! Scissors beats Paper.")
-}
-}
+                <div><p>Press play to start the game</p></div>
 
-while (pcscore < 5 && playerscore < 5) {
-    let playerSelection = prompt("Make a choice, enter: Rock, Paper or Scissors").toLowerCase();
-    console.log(playerSelection)
-    let computerSelection = getComputerChoice(array);
-    console.log(computerSelection)
-    playRound(playerSelection, computerSelection);
-    if (pcscore == 5) {
-        console.log("********   Game over! You lose! :\(   ********");
-    } else if (playerscore == 5) {
-        console.log("********   Game over! You Win! :\)   ********");
-    }
-}
-    </script>
+                <div><button class="play-btn">Play</button></div>
+        </div>
+        <div class="game-container">
+            <div class="choice">
+                <p class="make choice ">Make your choice</p>
+            </div>
+            <div class='btn-container'>
+                <button class="btn">ROCK</button>
+                <button class="btn">PAPER</button>
+                <button class="btn">SCISSORS</button>
+            </div>
+            <div class="go-btn">
+                <button class="btn-go">GO!</button>
+            </div>
+            <div class="game-result">
+                <div class="result-text">
+                    <div class="chosen-text-para">
+                        <div class="sp one"><p></p></div>
+                        <div class="sp vs"><p>VS</p></div>
+                        <div class="sp two"><p></p></div>
+                    </div>
+                    <div class="result-text-para"><p></p></div>
+                </div>
+                <div class="result-score">
+                    <div><p>YOU: <span id="one">0</span></p></div>
+                    <div><p>SCORE:</p></div>
+                    <div><p>PC: <span id="two">0</span></p></div>
+                </div>
+            </div>
+        </div>
+        <div class="results-container">
+            <div><p class="gameOver over">Game over</p></div>
+            <div class="info-container">
+                <p></p>
+            </div>
+            <div class="playaAgain-container">
+                <div><p class="gameOver">Press play to play again</p></div>
+                <div><button class="play-btn again">Play</button></div>
+            </div>
+        </div>
+    </div>
+ <script src="app.js"></script>
 </body>
 </html>
